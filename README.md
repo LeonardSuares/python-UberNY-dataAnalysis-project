@@ -1,19 +1,41 @@
-# Uber New York Data Analysis
+# Uber NY Operations Intelligence Dashboard
 
-A comprehensive Streamlit dashboard for analyzing Uber pickup patterns in New York City (Jan-June 2015). This project utilizes Plotly for interactive data exploration and Streamlit's multi-page architecture for a clean user experience.
+An interactive, multi-page data analytics platform built with **Streamlit** and **Plotly** to visualize 2015 Uber pickup trends in New York City. This project transforms raw CSV datasets into actionable insights regarding temporal demand and base efficiency.
+
+
+
+---
 
 ## Key Features
-* **Temporal Demand Heatmaps:** Visualize peak hours and days across the first half of 2015.
-* **Dispatching Base Intelligence:** Analyze trip volume vs. active vehicles to determine base efficiency.
-* **Interactive Filtering:** Explore demand patterns across different months and weekdays.
-* **Automated ETL:** Centralized data cleaning and feature engineering in `utils.py`.
+
+* **Temporal Demand Heatmaps:** High-resolution visualization of "Hour vs. Day" demand patterns using Plotly's interactive scaling.
+* **Base Performance Metrics:** Comparative analysis of dispatching bases utilizing FOIL data to calculate **Trips-per-Vehicle** efficiency.
+* **Granular Location Lookup:** A deep-dive tool for individual **Location IDs**, allowing users to identify peak hours for specific NYC zones.
+* **Persistent Navigation:** sidebar-controlled multi-page architecture for seamless exploration of different data facets.
+* **Live Data Auditing:** Integrated expanders for raw data inspection, synced to user-defined filters.
+
+---
 
 ## Tech Stack
-* **Python** (Pandas, NumPy)
-* **Streamlit** (Dashboarding & Session State)
-* **Plotly** (Interactive Geospatial & Temporal Visualizations)
 
-## 📂 Installation
-1. Clone the repo.
-2. Place CSV files in the `data/` folder.
-3. Run `streamlit run Home.py`.
+* **Language:** `Python 3.x`
+* **Core Libraries:** `Pandas`, `NumPy`
+* **Interactive Visuals:** `Plotly Express`, `Plotly Graph Objects`
+* **Framework:** `Streamlit` (Multi-page Architecture)
+* **Memory Management:** Centralized ETL logic in `utils.py` using `@st.cache_data`.
+
+---
+
+## Project Architecture
+
+```text
+Uber-NY-Analysis/
+├── Home.py               # Landing page & Executive KPIs
+├── utils.py              # Centralized cleaning & feature engineering
+├── data/
+│   ├── uber-raw-data-janjune-15_sample.csv
+│   └── Uber-Jan-Feb-FOIL.csv
+└── pages/
+    ├── 1_Temporal_Patterns.py  # Pairwise heatmaps & Weekday trends
+    ├── 2_Base_Performance.py   # Dispatching base efficiency metrics
+    └── 3_Location_Analysis.py  # Top zones & neighborhood lookup
